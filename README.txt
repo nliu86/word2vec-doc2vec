@@ -1,6 +1,6 @@
 Embedding vector for word, query, sentence and paragraph
 
-I’ve played with word2vec for almost a year and learned a great deal. I want to share my experiences here to help others to better use this powerful tool:
+I’ve played with word2vec for almost a year and learned a great deal. I’d like to share my experiences here to help others to better use this powerful tool:
 1.	Word vector
 a.	It’s a little bit challenging to figure out the best training parameters for word2vec. Fortunately, Levy & Goldberg’s paper pointed us to the right direction:
 Improving Distributional Similarity with Lessons Learned from Word Embeddings
