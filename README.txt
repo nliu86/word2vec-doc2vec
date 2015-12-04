@@ -9,7 +9,7 @@ From their paper:
 •	With SGNS, prefer many negative samples.
 My own experience with word2vec + deep learning also shows SGNS (cbow=0 and hs=0) is the best option.
 b.	For SGNS, here is what I believe really happens during the training:
-If two words appear together, the training will try to increase their cosine similarity. If two words never appear together, the training will reduce their cosine similarity. So if there are a lot of user queries such as “auto insurance” and “car insurance”, then “auto” vector will be similar to “insurance” vector and “car” vector will also be similar to “insurance” vector. Eventually “auto” vector will be very similar to “car” vector because both of them are similar to “insurance”, “loan” and “repair” vector. This intuition will be useful if you want to better design your training data to meet the goal of your information retrieval task.
+If two words appear together, the training will try to increase their cosine similarity. If two words never appear together, the training will reduce their cosine similarity. So if there are a lot of user queries such as “auto insurance” and “car insurance”, then “auto” vector will be similar to “insurance” vector (cosine similarity ~= 0.3) and “car” vector will also be similar to “insurance” vector. Since “insurance”, “loan” and “repair” rarely appear together in the same context, their vectors have small mutual cosine similarity (cosine similarity ~= 0.1). We can treat them as orthogonal to each other and think them as different dimensions. After training is complete, “auto” vector will be very similar to “car” vector (cosine similarity ~= 0.6) because both of them are similar in “insurance” dimension, “loan” dimension and “repair” dimension.   This intuition will be useful if you want to better design your training data to meet the goal of your text learning task.
 2.	Query vector
 A query usually has 1-10 words. I have implemented and tried two query vector predictors.
 a.	Sentence vector based on Quoc Le & Tomas Mikolov’s paper: Distributed Representations of Sentences and Documents 
@@ -26,3 +26,4 @@ Tri-letter gram vector can be useful in detecting meanings of misspellings, unkn
 Embedding vectors are married to deep learning. Without deep learning, we lose a lot of benefits of embedding vectors. For my predictive modeling problem with 1TB training data and 200 million rows, deep-learning-based model outperforms simple neural network model by about 10%. 
 
 In summary, here is what I recommend if you plan to use word2vec: choose the right training parameters and training data for word2vec, use avg predictor for query, sentence and paragraph(code here) and apply deep learning on resulted vectors.
+
