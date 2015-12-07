@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Embedding vector for word, query, sentence and paragraph
 
 I’ve played with word2vec for almost a year and learned a great deal. I’d like to share my experiences here to help others to better use this powerful tool:
@@ -15,7 +14,7 @@ If two words appear together, the training will try to increase their cosine sim
 A query usually has 1-10 words. I have implemented and tried two query vector predictors.
 a.	Sentence vector based on Quoc Le & Tomas Mikolov’s paper: Distributed Representations of Sentences and Documents 
 b.	Avg predictor by averaging the word vectors of each word in a query. You can check out source code here
-https://github.com/nliu86/word2vec_doc2vec
+https://github.com/nliu86/word2vec-doc2vec
 The avg predictor is implemented in multi-thread and is super-fast. For my experiment with word2vec + deep learning, avg predictor slightly beats sentence vector.
 3.	Sentence and paragraph vector
 We have to set our expectation reasonable here: there exists no such magic to accurately transform sentence and paragraph with infinite possibilities into 300-dimension vector. Can you image we spit out 300 random numbers instead of saying a whole sentence to convey our meaning?  For word and phrase, since they appear in a lot of contexts, we can exploit those contexts. However, for sentence and paragraph, they usually only appear once in training corpus. The only thing we can exploit is to use the relationship between sentence and the words in it. By doing so, we get something that’s similar to the avg predictor mentioned earlier. So for sentence and paragraph, the best way to represent them is to first remove all the stop words. Then for the rest words, pick a dominant word set and use avg predictor for the dominant word set. If we don’t pick dominant word set, avg predictor will average every word in the sentence and the resulted vector will be super noisy. I’ve used a special training data to train word2vec and then used vector clustering to pick dominant word sets from this article: Disneyland Bought Extra Land For A Billion-Dollar Park Expansion. The sets look like [disney disneyland park] and [disney disneyland star_wars], which are good enough for my purpose of contextual advertising.
@@ -30,7 +29,3 @@ In summary, here is what I recommend if you plan to use word2vec: choose the rig
 
 Let me know if you have any questions.
 
-=======
-Sorry, the project has moved to a new place:
-https://github.com/nliu86/word2vec-doc2vec
->>>>>>> 1927e583e70b374ff60c993025098a2bd71debfb
