@@ -33,6 +33,7 @@ Tri-letter gram vector can be useful in detecting meanings of misspellings, unkn
 3.	**Sentence and paragraph vector**  
 We have to set our expectation reasonable here: there exists no such magic to accurately transform sentence and paragraph with infinite possibilities into 300-dimension vector with word2vec. Can you image we spit out 300 random numbers instead of saying a whole sentence to convey our meaning?  For word and phrase, since they appear in a lot of contexts, we can utilize those contexts. However, for sentence and paragraph, they usually only appear once in training corpus. A better way to represent sentence or paragraph is to use LDA. A major difference between word2vec and LDA is that word2vec treats everything as a single training corpus whereas LDA you have to have multiple documents. In word2vec two words are similar if they appear adjacent to each other very often or have similar contexts. While in LDA two words are similar if they appear together in a lot of documents, thus they belong to the same topic. With LDA, sentence or paragraph can be represented as a vector of topics.
 
+![architecture](https://github.com/nliu86/word2vec-doc2vec/blob/master/architecture.png)
 
 2.  Do high dimension nearest neighbor search to find similar items.
 -----------------------
