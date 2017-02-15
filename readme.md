@@ -6,7 +6,7 @@ How to use deep learning to build a recommendation system or product search engi
 
 1.	**Word vector**  
   *	It’s a little bit challenging to figure out the best training parameters for word2vec. Fortunately, Levy & Goldberg’s paper pointed us to the right direction:
-Improving Distributional Similarity with Lessons Learned from Word Embeddings
+Improving Distributional Similarity with Lessons Learned from Word Embeddings  
 From their paper:  
     *i) SGNS (Skip-Grams with Negative Sampling) is a robust baseline. While it might not be the best method for every task, it does not significantly underperform in any scenario. Moreover, SGNS is the fastest method to train, and cheapest (by far) in terms of disk space and memory consumption.*  
     *ii) With SGNS, prefer many negative samples.*  
